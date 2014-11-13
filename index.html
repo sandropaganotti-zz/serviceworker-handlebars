@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Installing service worker</title>
+    <h1>Service Worker:</h1>
+    <p hidden>
+      Service Worker installed, search for thumbnail
+      pointing the browser to search/term, eg:
+      <a href="search/cats">search/cats</a>
+    </p>
+  </head>
+  <body>
+    <script>
+      navigator.serviceWorker
+        .register('./worker.js',{scope: './'})
+        .then(function(serviceWorker){
+          document.querySelector('p').removeAttribute('hidden');
+        });
+    </script>
+  </body>
+</html>
