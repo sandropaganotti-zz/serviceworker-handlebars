@@ -1,6 +1,6 @@
 importScripts('handlebars-v2.0.0.js');
 importScripts('serviceworker-cache-polyfill.js');
-var youtube = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyChzANAy9JaN3KdUM3DOVMW0lluJFBSTUg&q=";
+var youtube = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=<APIKEY>&q=";
 var list;
 
 oninstall = function(evt) {
