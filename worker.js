@@ -22,18 +22,4 @@ worker.get('/search/:term', function(request, response) {
   });
 });
 
-<<<<<<< HEAD
-onfetch = function(evt) {
-  if(/\/search\/[^\/]+$/.test(evt.request.url)){
-    evt.respondWith(Promise.all([
-      caches.match('list.hbs').then(function(tpl){ return tpl.text();  }),
-      fetch(youtube + evt.request.url.split('/').pop()).then(function(res){ return res.json(); })
-    ]).then(function(res){
-      var html = (Handlebars.compile(res[0]))(res[1]);
-      return new Response(html, {headers: {"Content-Type": "text/html"} });
-    }));
-  }
-};
-=======
 worker.init();
->>>>>>> master
