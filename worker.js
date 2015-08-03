@@ -14,12 +14,11 @@ oninstall = function(evt) {
 onfetch = function(evt) {
   if(/\/search\/[^\/]+$/.test(evt.request.url)){
     evt.respondWith(Promise.all([
-      caches.match('list.hbs').then(tpl => tpl.text()),
-      fetch(youtube + evt.request.url.split('/').pop()).then(res => res.json())
-    ]).then(([tpl,json]) => {
-      return new Response(
-        (Handlebars.compile(tpl))(json), 
-        {headers: {"Content-Type": "text/html"}});
+      caches.match('list.hbs').then(function(tpl){ return tpl.text();  }),
+      fetch(youtube + evt.request.url.split('/').pop()).then(function(res){ return res.json(); })
+    ]).then(function(res){
+      var html = (Handlebars.compile(res[0]))(res[1]);
+      return new Response(html, {headers: {"Content-Type": "text/html"} });
     }));
   }
 };
